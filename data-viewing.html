@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sub Admin Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+    /* Header Styling */
+    header {
+      background-color: #512da8;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    /* Container Styling */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 20px;
+    }
+    
+    /* Side Menu Styling */
+    .side-menu {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    
+    .side-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .side-menu li {
+      margin-bottom: 10px;
+    }
+    
+    .side-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: #512da8;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .side-menu a:hover {
+      background-color: #e1bee7;
+    }
+    
+    .side-menu a i {
+      margin-right: 10px;
+    }
+    
+    /* Data Viewing Styling */
+    .data-viewing {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    
+    .data-viewing h2 {
+      color: #512da8;
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
+    
+    .data-viewing table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    
+    .data-viewing th,
+    .data-viewing td {
+      padding: 12px;
+      text-align: left;
+    }
+    
+    .data-viewing th {
+      background-color: #512da8;
+      color: #fff;
+    }
+    
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sub Admin Dashboard</h1>
+  </header>
+  
+  <div class="container">
+    <div class="side-menu">
+      <ul>
+        <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Management</a></li>
+        <li><a href="data-viewing.html"><i class="material-icons">visibility</i>Data Viewing</a></li>
+      </ul>
+    </div>
+    
+    <div class="data-viewing">
+      <h2>Data Viewing</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>johndoe@example.com</td>
+          <td>Employee</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Smith</td>
+          <td>janesmith@example.com</td>
+          <td>Manager</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Michael Johnson</td>
+          <td>michaeljohnson@example.com</td>
+          <td>Employee</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Emily Davis</td>
+          <td>emilydavis@example.com</td>
+          <td>Manager</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
