@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation Reports</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    /* Header Styling */
+    header {
+      background-color: #512da8; /* Dark blue color */
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Container Styling */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 20px;
+    }
+
+    /* Side Menu Styling */
+    .side-menu {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      color: #512da8; /* Dark blue color for default text color */
+    }
+
+    .side-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu li {
+      margin-bottom: 10px;
+    }
+
+    .side-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: #512da8; /* Dark blue color */
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .side-menu a:hover {
+      background-color: #e1bee7;
+    }
+
+    .side-menu a i {
+      margin-right: 10px;
+    }
+
+    .side-menu a.active {
+      background-color: #e1bee7;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Donation Report Styling */
+    .donation-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .donation-item {
+      background-color: #e1eaf1; /* Light blue color for donation cards background */
+      color: #444; /* Darken the text color for better readability */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .donation-item h2 {
+      color: #512da8; /* Dark blue color for the title */
+      margin-top: 0;
+    }
+
+    .donation-item p {
+      margin: 8px 0;
+    }
+
+    .donation-item strong {
+      color: #3e3240;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>Donation Reports</h1>
+  </header>
+
+  <div class="container">
+    <div class="side-menu">
+      <ul>
+        <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Management</a></li>
+        <li><a href="donation-report.html" class="active"><i class="material-icons">monetization_on</i>Donation Report</a></li>
+        <li><a href="data-viewing.html"><i class="material-icons">visibility</i>Data Viewing</a></li>
+        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
+      </ul>
+    </div>
+
+    <main>
+      <section class="donation-list">
+        <div class="donation-item">
+          <h2>Donation From: Teh Company</h2>
+          <p><strong>Donor Company/Organization:</strong> Teh Company</p>
+          <p><strong>PRO of Donation Company:</strong> Ahmad Bin Yusof</p>
+          <p><strong>PRO of Receiving Company:</strong> Siti Binti Ali</p>
+          <p><strong>Receiving Bank Account:</strong> XXXX-XXXX-XXXX-1234</p>
+          <p><strong>Donor Company's Bank Account:</strong> XXXX-XXXX-XXXX-5678</p>
+          <p><strong>Date:</strong> 2023-08-01</p>
+          <p><strong>Amount:</strong> MYR 1,500</p>
+          <p><strong>Transaction ID:</strong> XYZ123456</p>
+          <p><strong>Notes:</strong> This donation is for a charitable cause.</p>
+        </div>
+
+        <div class="donation-item">
+          <h2>Donation From: Lim Foundation</h2>
+          <p><strong>Donor Company/Organization:</strong> Lim Foundation</p>
+          <p><strong>PRO of Donation Company:</strong> Tan Mei Ling</p>
+          <p><strong>PRO of Receiving Company:</strong> Wong Chee Meng</p>
+          <p><strong>Receiving Bank Account:</strong> XXXX-XXXX-XXXX-9876</p>
+          <p><strong>Donor Company's Bank Account:</strong> XXXX-XXXX-XXXX-5432</p>
+          <p><strong>Date:</strong> 2023-08-03</p>
+          <p><strong>Amount:</strong> MYR 20,000</p>
+          <p><strong>Transaction ID:</strong> ABC789012</p>
+          <p><strong>Notes:</strong> This donation is for a community project.</p>
+        </div>
+      
+        <!-- Add more donation items as needed -->
+      </section>
+    </main>
+  </div>
+</body>
+</html>
