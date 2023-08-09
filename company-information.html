@@ -133,44 +133,101 @@
       </ul>
     </div>
 
-    <div class="company-info">
-      <h2>Company Information</h2>
-      <table>
-        <tr>
-          <th>Field</th>
-          <th>Value</th>
-        </tr>
-        <tr>
-          <td>Company Name</td>
-          <td>Acme Corporation</td>
-        </tr>
-        <tr>
-          <td>Registration Number</td>
-          <td>987654321</td>
-        </tr>
-        <tr>
-          <td>Person in Charge</td>
-          <td>Jane Smith</td>
-        </tr>
-        <tr>
-          <td>Phone Number</td>
-          <td>+1 555-123-4567</td>
-        </tr>
-        <tr>
-          <td>Address</td>
-          <td>456 Elm Street</td>
-        </tr>
-        <tr>
-          <td>Secondary Address</td>
-          <td>789 Oak Avenue</td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td>jane@example.com</td>
-        </tr>
-      </table>
+    <!-- Dynamic Company Information Sections -->
+    <div id="companySections">
+      <!-- JavaScript will populate this section -->
     </div>
   </div>
+  <script>
+    // Sample dynamic data for multiple companies (include your additional companies here)
+    const companies = [
+  {
+    companyName: 'Khalid Engineering (Private Limited)',
+    registrationNumber: '987654321',
+    personInCharge: 'Ahmad Khalid',
+    officeFax: '+1 555-789-0123',
+    phoneNumber: '+1 555-123-4567',
+    address: '456 Elm Street',
+    secondaryAddress: '789 Oak Avenue',
+    email: 'ahmadkhalid@gmail.com'
+  },
+  {
+    companyName: 'Khaldun (Private Limited)',
+    registrationNumber: '123456789',
+    personInCharge: 'Ahmad Khalid',
+    officeFax: '+1 555-999-8888',
+    phoneNumber: '+1 555-567-8901',
+    address: '123 Main Street',
+    secondaryAddress: 'Suite 201',
+    email: 'ahmadkhalid@gmail.com'
+  },
+  {
+    companyName: 'Keladi (International)',
+    registrationNumber: '456789012',
+    personInCharge: 'Ahmad Khalid',
+    officeFax: '+1 555-555-5555',
+    phoneNumber: '+1 555-789-0123',
+    address: '789 Maple Avenue',
+    secondaryAddress: 'Suite 101',
+    email: 'ahmadkhalid@gmail.com'
+  },
+  {
+    companyName: 'Malik Holdings (Sdn Bhd)',
+    registrationNumber: '890123456',
+    personInCharge: 'Ahmad Khalid',
+    officeFax: '+1 555-123-4567',
+    phoneNumber: '+1 555-555-5555',
+    address: '567 Pine Street',
+    secondaryAddress: 'Unit B',
+    email: 'ahmadkhalid@gmail.com'
+  }
+];
+
+  
+    // Function to create and populate company information sections
+    function createCompanySections(data) {
+      const companySections = document.getElementById('companySections');
+  
+      data.forEach(company => {
+        const section = document.createElement('div');
+        section.classList.add('company-info');
+  
+        const heading = document.createElement('h2');
+        heading.textContent = company.companyName;
+        section.appendChild(heading);
+  
+        const table = document.createElement('table');
+        const headerRow = document.createElement('tr');
+        const fieldHeader = document.createElement('th');
+        fieldHeader.textContent = 'Field';
+        const valueHeader = document.createElement('th');
+        valueHeader.textContent = 'Value';
+        headerRow.appendChild(fieldHeader);
+        headerRow.appendChild(valueHeader);
+        table.appendChild(headerRow);
+  
+        for (const field in company) {
+          if (field !== 'companyName') {
+            const row = document.createElement('tr');
+            const fieldCell = document.createElement('td');
+            fieldCell.textContent = field;
+            const valueCell = document.createElement('td');
+            valueCell.textContent = company[field];
+            row.appendChild(fieldCell);
+            row.appendChild(valueCell);
+            table.appendChild(row);
+          }
+        }
+  
+        section.appendChild(table);
+        companySections.appendChild(section);
+      });
+    }
+  
+    // Call the function to create and populate company sections
+    createCompanySections(companies);
+  </script>
+  
 </body>
 
 </html>

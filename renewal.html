@@ -76,53 +76,67 @@
       font-weight: bold;
     }
 
-    /* Account Status Styling */
-    .account-status {
+    /* Company List Table Styling */
+    .main-section {
       background-color: #fff;
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
     }
 
-    .account-status h2 {
+    .main-section h2 {
       color: #512da8;
       font-size: 24px;
-      margin: 0 0 10px;
+      margin: 0 0 20px;
     }
 
-    .account-status p {
-      margin: 0 0 10px;
-      font-size: 16px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
     }
 
-    .account-status .status {
-      font-weight: bold;
-      color: #999a40;
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
     }
 
-    .account-status .days-left {
-      font-weight: bold;
-      color: #3498db; /* Blue color for days left */
+    th {
+      background-color: #f2f2f2;
     }
 
-    .account-status .renew-button {
+    /* Renew Button Styling */
+    .renew-button {
       background-color: #512da8;
       color: #fff;
       border: none;
-      padding: 10px 20px;
+      padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
-    .account-status .renew-button:hover {
+    .renew-button:hover {
       background-color: #e1bee7;
+    }
+
+    /* Status Highlighting */
+    .status.active {
+      color: #2ecc71; /* Green for active status */
+    }
+
+    .status.inactive {
+      color: #e74c3c; /* Red for inactive/expired status */
     }
 
     /* Responsive Styling */
     @media (max-width: 768px) {
       .container {
         grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 14px;
       }
     }
   </style>
@@ -145,13 +159,111 @@
       </ul>
     </div>
 
-    <div class="account-status">
-      <h2>Account Status</h2>
-      <p>Your account renewal status: <span class="status">Active</span></p>
-      <p>Days left for renewal: <span class="days-left">65</span></p>
-      <button class="renew-button">Renew Account</button>
+    <div class="main-section">
+      <h2>Company List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Renewal Date</th>
+            <th>Time Remaining</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="companyTableBody">
+          <!-- Table body content will be dynamically generated here -->
+        </tbody>
+      </table>
     </div>
   </div>
+
+  <script>
+    const companies = [
+  {
+    name: 'Khalid Engineering (Private Limited)',
+    renewalDate: '2023-09-01',
+    status: 'Active',
+    canRenew: 'yes'
+  },
+  {
+    name: 'Khaldun (Private Limited)',
+    renewalDate: '2023-09-05',
+    status: 'Inactive',
+    canRenew: 'no'
+  },
+  {
+    name: 'Keladi (International)',
+    renewalDate: '2023-09-10',
+    status: 'Inactive',
+    canRenew: 'yes'
+  },
+  {
+    name: 'Malik Holdings (Sdn Bhd)',
+    renewalDate: '2023-09-15',
+    status: 'Active',
+    canRenew: 'yes'
+  }
+  // Add more company objects as needed
+];
+
+
+    function populateTable() {
+      const tableBody = document.getElementById('companyTableBody');
+
+      companies.forEach(company => {
+        const row = document.createElement('tr');
+        const currentDate = new Date();
+        const renewalDate = new Date(company.renewalDate);
+        const daysLeft = Math.floor((renewalDate - currentDate) / (1000 * 60 * 60 * 24));
+
+        row.innerHTML = `
+          <td>${company.name}</td>
+          <td>${company.renewalDate}</td>
+          <td>${daysLeft} days</td>
+          <td class="status ${company.status.toLowerCase()}">${company.status}</td>
+          <td>${company.status === 'Active' ? 'No action required' : `<button class="renew-button" onclick="renewCompany(this, '${company.canRenew}')">Renew</button>`}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function renewCompany(button, canRenew) {
+      var row = button.parentNode.parentNode;
+      var renewalDateCell = row.querySelector('td:nth-child(2)');
+      var daysLeftCell = row.querySelector('td:nth-child(3)');
+      var statusCell = row.querySelector('.status');
+      var actionCell = row.querySelector('td:last-child');
+
+      if (canRenew === 'no') {
+        // Display error message
+        alert('Renewal for this company is currently unavailable. Please contact the administrator for assistance.');
+        return;
+      }
+
+      // Update renewal date to current date
+      const currentDate = new Date();
+      const newRenewalDate = currentDate.toISOString().split('T')[0];
+      renewalDateCell.textContent = newRenewalDate;
+
+      // Update renewal days left to 6 months and 6 days
+      const newRenewalDaysLeft = '6 months, 6 days';
+      daysLeftCell.textContent = newRenewalDaysLeft;
+
+      // Update status and highlight
+      statusCell.textContent = 'Active';
+      statusCell.classList.remove('inactive');
+      statusCell.classList.add('active');
+
+      // Update actions cell
+      actionCell.textContent = 'No action required';
+      button.style.display = 'none';
+    }
+
+    // Populate the table when the page loads
+    window.addEventListener('load', populateTable);
+  </script>
 </body>
+
 
 </html>
