@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sub Admin Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+    /* Header Styling */
+    header {
+      background-color: #512da8;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    /* Main Container Styling */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+    }
+    
+    /* Side Menu Styling */
+    .side-menu {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    
+    .side-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .side-menu li {
+      margin-bottom: 10px;
+    }
+    
+    .side-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: #512da8;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .side-menu a:hover {
+      background-color: #e1bee7;
+    }
+    
+    .side-menu a i {
+      margin-right: 10px;
+    }
+    
+    .side-menu a.active {
+      background-color: #e1bee7;
+      color: #fff;
+      font-weight: bold;
+    }
+    
+    /* Form Styling */
+    .form-section {
+      background-color: #f5f5f5;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      animation: slide-up 0.4s ease-in-out;
+    }
+    
+    .form-section h2 {
+      color: #512da8;
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
+    
+    .form-section form {
+      display: grid;
+      gap: 20px;
+    }
+    
+    .form-section label {
+      font-weight: bold;
+    }
+    
+    .form-section input,
+    .form-section select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    
+    .form-section select {
+      appearance: none;
+      background-color: #fff;
+    }
+    
+    .form-section select option {
+      background-color: #fff;
+    }
+    
+    .form-section button {
+      padding: 10px 20px;
+      background-color: #512da8;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .form-section button:hover {
+      background-color: #e1bee7;
+    }
+    
+    /* Custom styles for PRO form */
+    .form-section.pro-form {
+      margin-top: 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @keyframes slide-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+ /* Error Popup Styling */
+.error-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+}
+
+.error-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.error-content p {
+  margin: 0 0 20px;
+}
+
+.error-content button {
+  padding: 10px 20px;
+  background-color: #512da8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.error-content button:hover {
+  background-color: #e1bee7;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sub Admin Dashboard</h1>
+  </header>
+  
+  <div class="container">
+    <div class="side-menu">
+        <ul>
+        <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
+        <li><a href="register-company.html" class="active"><i class="material-icons">business_center</i>Register Company</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Information</a></li>
+        <li><a href="add-employee.html"><i class="material-icons">person_add</i>Add Employee</a></li> 
+        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donation Report</a></li>
+        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
+      </ul>
+    </div>
+    
+    <div class="form-section">
+      <h2>Register New Company</h2>
+      <form id="registerForm">
+        <div>
+          <label for="companyName">Company Name:</label>
+          <input type="text" id="companyName" name="companyName" required>
+        </div>
+        <div>
+          <label for="companyLabel">Company Label:</label>
+          <select id="companyLabel" name="companyLabel" required>
+            <option value="" disabled selected>Select Company Label</option>
+            <option value="Sdn Bhd">Sdn Bhd</option>
+            <option value="International">International</option>
+            <option value="Private Limited">Private Limited</option>
+            <option value="Berhad">Berhad</option>
+            <option value="Koperasi">Koperasi</option>
+            <option value="Yayasan">Yayasan</option>
+            <option value="Pertubuhan">Pertubuhan</option>
+            <option value="Persutuan">Persutuan</option>
+          </select>
+        </div>
+        <div>
+          <label for="proName">PRO (Public Relations Officer):</label>
+          <input type="text" id="proName" name="proName" required>
+        </div>
+        <div>
+          <label for="registrationNumber">Registration Number:</label>
+          <input type="text" id="registrationNumber" name="registrationNumber" required>
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div>
+            <label for="phoneNumber">Office Fax:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+          </div>
+        <div>
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" required>
+        </div>
+        <div>
+          <label for="secondaryAddress">Secondary Address:</label>
+          <input type="text" id="secondaryAddress" name="secondaryAddress" required>
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <button type="submit" id="registerButton">Register</button>
+      </form>
+    </div>
+  </div>
+ <!-- Error Popup -->
+<div class="error-popup" id="errorPopup" style="display: none;">
+  <div class="error-content">
+    <p>An error occurred: Company is not available or already taken.</p>
+    <button onclick="closeErrorPopup()">Close</button>
+  </div>
+</div>
+  <script>
+    // ... (Existing JavaScript code) ...
+    
+    // Function to display error popup
+    function displayErrorPopup() {
+      const errorPopup = document.getElementById("errorPopup");
+      errorPopup.style.display = "block";
+    }
+
+    // Function to close error popup
+    function closeErrorPopup() {
+      const errorPopup = document.getElementById("errorPopup");
+      errorPopup.style.display = "none";
+    }
+    
+    // Add form submission logic
+    document.getElementById("registerButton").addEventListener("click", function(event) {
+      event.preventDefault();
+      
+      // Display error popup
+      displayErrorPopup();
+    });
+  </script>
+  
+</body>
+</html>
