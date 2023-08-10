@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sub Admin Dashboard - Add Employee</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    /* Header Styling */
+    header {
+      background-color: #512da8;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    /* Container Styling */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 20px;
+    }
+
+    /* Side Menu Styling */
+    .side-menu {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .side-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .side-menu li {
+      margin-bottom: 10px;
+    }
+
+    .side-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: #512da8;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .side-menu a:hover {
+      background-color: #e1bee7;
+    }
+
+    .side-menu a i {
+      margin-right: 10px;
+    }
+
+    .side-menu a.active {
+      background-color: #e1bee7;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Employee Form Styling */
+    .employee-form {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .employee-form h2 {
+      color: #512da8;
+      font-size: 24px;
+      margin: 0 0 20px;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-button {
+      background-color: #512da8;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-button:hover {
+      background-color: #6a1bbd;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Sub Admin Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <div class="side-menu">
+      <ul>
+        <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Information</a></li>
+        <li><a href="add-employee.html" class="active"><i class="material-icons">person_add</i>Add Employee</a></li> 
+        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donation Report</a></li>
+        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
+      </ul>
+    </div>
+
+    <div class="employee-form">
+      <h2>Add New Employee</h2>
+      <form id="employee-form">
+        <label class="form-label" for="fullName">Full Name:</label>
+        <input class="form-input" type="text" id="fullName" name="fullName" required>
+        
+        <label class="form-label" for="position">Position:</label>
+        <input class="form-input" type="text" id="position" name="position" required>
+        
+        <label class="form-label" for="department">Department:</label>
+        <input class="form-input" type="text" id="department" name="department" required>
+        
+        <label class="form-label" for="company">Company:</label>
+        <select class="form-select" id="company" name="company" required>
+          <option value="">Select Company</option>
+          <option value="Khalid Engineering (Private Limited)">Khalid Engineering (Private Limited)</option>
+          <option value="Khaldun (Private Limited)">Khaldun (Private Limited)</option>
+          <option value="Keladi (International)">Keladi (International)</option>
+          <option value="Malik Holdings (Sdn Bhd)">Malik Holdings (Sdn Bhd)</option>
+        </select>
+        
+        <label class="form-label" for="address">Address:</label>
+        <input class="form-input" type="text" id="address" name="address" required>
+        
+        <label class="form-label" for="phoneNumber">Phone Number:</label>
+        <input class="form-input" type="tel" id="phoneNumber" name="phoneNumber" required>
+        
+        <label class="form-label" for="email">Email:</label>
+        <input class="form-input" type="email" id="email" name="email" required>
+        
+        <label class="form-label" for="pro">PRO:</label>
+        <input class="form-input" type="text" id="pro" name="pro" value="Ahmad Khalid B. Ali" readonly>
+        
+        <button class="form-button" type="submit">Add Employee</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for adding new employees will go here
+  </script>
+</body>
+
+</html>
