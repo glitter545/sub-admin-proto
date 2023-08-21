@@ -131,7 +131,7 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="company-information.html"> <!-- Updated form action -->
+    <form onsubmit="return handleLoginForm();" action="company-information.html">
         <h3>Login Here (Sub Admins)</h3>
 
         <label for="username">Username</label>
@@ -140,7 +140,27 @@
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password">
 
-        <button>Log In</button>
+        <button type="submit">Log In</button>
     </form>
+    <script>
+        function handleLoginForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+    
+            if (username.trim() === "" || password.trim() === "") {
+                alert("Please enter both username and password.");
+                return false;
+            }
+    
+            if (username === "khalidcorp" && password === "corp123") {
+                return true; // Allow form submission
+            } else {
+                alert("Invalid username or password. Please try again.");
+                return false;
+            }
+        }
+    </script>
+    
+
 </body>
 </html>
