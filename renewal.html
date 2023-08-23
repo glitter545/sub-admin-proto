@@ -151,25 +151,24 @@
     <div class="side-menu">
       <ul>
         <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
-        <li><a href="register-company.html"><i class="material-icons">business_center</i>Register Company</a></li>
-        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Information</a></li>
-        <li><a href="add-employee.html"><i class="material-icons">person_add</i>Add Employee</a></li> 
-        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donation Report</a></li>
-        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>PRO Information</a></li>
+        <li><a href="add-employee.html"><i class="material-icons">group_add</i>Add PRO</a></li> 
+        <li><a href="register.html"><i class="material-icons">person_add</i>Register</a></li>
+        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donor Report</a></li>
         <li><a href="renewal.html" class="active"><i class="material-icons">refresh</i>Renewal Status</a></li>
       </ul>
     </div>
 
     <div class="main-section">
-      <h2>Company List</h2>
+      <h2>Publisher Renewal</h2>
       <table>
         <thead>
           <tr>
-            <th>Company Name</th>
+            <th>Publisher</th>
             <th>Renewal Date</th>
             <th>Time Remaining</th>
             <th>Status</th>
-            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody id="companyTableBody">
@@ -182,29 +181,30 @@
   <script>
     const companies = [
   {
-    name: 'Khalid Engineering (Private Limited)',
-    renewalDate: '2023-09-01',
-    status: 'Active',
-    canRenew: 'yes'
-  },
-  {
-    name: 'Khaldun (Private Limited)',
-    renewalDate: '2023-09-05',
-    status: 'Inactive',
-    canRenew: 'no'
-  },
-  {
-    name: 'Keladi (International)',
-    renewalDate: '2023-09-10',
-    status: 'Inactive',
-    canRenew: 'yes'
-  },
-  {
-    name: 'Malik Holdings (Sdn Bhd)',
-    renewalDate: '2023-09-15',
+    name: 'MF WORLDWIDE RESOURCES',
+    renewalDate: '2023-09-30',
     status: 'Active',
     canRenew: 'yes'
   }
+  // },
+  // {
+  //   name: 'Khaldun (Private Limited)',
+  //   renewalDate: '2023-09-05',
+  //   status: 'Inactive',
+  //   canRenew: 'no'
+  // },
+  // {
+  //   name: 'Keladi (International)',
+  //   renewalDate: '2023-09-10',
+  //   status: 'Inactive',
+  //   canRenew: 'yes'
+  // },
+  // {
+  //   name: 'Malik Holdings (Sdn Bhd)',
+  //   renewalDate: '2023-09-15',
+  //   status: 'Active',
+  //   canRenew: 'yes'
+  // }
   // Add more company objects as needed
 ];
 
@@ -219,47 +219,43 @@
         const daysLeft = Math.floor((renewalDate - currentDate) / (1000 * 60 * 60 * 24));
 
         row.innerHTML = `
-          <td>${company.name}</td>
-          <td>${company.renewalDate}</td>
-          <td>${daysLeft} days</td>
-          <td class="status ${company.status.toLowerCase()}">${company.status}</td>
-          <td>${company.status === 'Active' ? 'No action required' : `<button class="renew-button" onclick="renewCompany(this, '${company.canRenew}')">Renew</button>`}</td>
-        `;
+  <td>${company.name}</td>
+  <td>${company.renewalDate}</td>
+  <td>${daysLeft} days</td>
+  <td class="status ${company.status.toLowerCase()}">${company.status}</td>
+`;
+
         tableBody.appendChild(row);
       });
     }
 
     function renewCompany(button, canRenew) {
-      var row = button.parentNode.parentNode;
-      var renewalDateCell = row.querySelector('td:nth-child(2)');
-      var daysLeftCell = row.querySelector('td:nth-child(3)');
-      var statusCell = row.querySelector('.status');
-      var actionCell = row.querySelector('td:last-child');
+  if (canRenew === 'no') {
+    // Display error message
+    alert('Renewal for this company is currently unavailable. Please contact the administrator for assistance.');
+    return;
+  }
 
-      if (canRenew === 'no') {
-        // Display error message
-        alert('Renewal for this company is currently unavailable. Please contact the administrator for assistance.');
-        return;
-      }
+  var row = button.parentNode.parentNode;
+  var renewalDateCell = row.querySelector('td:nth-child(2)');
+  var daysLeftCell = row.querySelector('td:nth-child(3)');
+  var statusCell = row.querySelector('.status');
 
-      // Update renewal date to current date
-      const currentDate = new Date();
-      const newRenewalDate = currentDate.toISOString().split('T')[0];
-      renewalDateCell.textContent = newRenewalDate;
+  // Update renewal date to current date
+  const currentDate = new Date();
+  const newRenewalDate = currentDate.toISOString().split('T')[0];
+  renewalDateCell.textContent = newRenewalDate;
 
-      // Update renewal days left to 6 months and 6 days
-      const newRenewalDaysLeft = '6 months, 6 days';
-      daysLeftCell.textContent = newRenewalDaysLeft;
+  // Update renewal days left to 6 months and 6 days
+  const newRenewalDaysLeft = '6 months, 6 days';
+  daysLeftCell.textContent = newRenewalDaysLeft;
 
-      // Update status and highlight
-      statusCell.textContent = 'Active';
-      statusCell.classList.remove('inactive');
-      statusCell.classList.add('active');
+  // Update status and highlight
+  statusCell.textContent = 'Active';
+  statusCell.classList.remove('inactive');
+  statusCell.classList.add('active');
+}
 
-      // Update actions cell
-      actionCell.textContent = 'No action required';
-      button.style.display = 'none';
-    }
 
     // Populate the table when the page loads
     window.addEventListener('load', populateTable);

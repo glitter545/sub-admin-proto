@@ -188,10 +188,28 @@
       border-radius: 5px;
     }
 
-    .filter-dropdown {
-      flex: 1;
-      margin-left: 20px;
-    }
+    .search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .search-bar {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Change display to block for the filter dropdown */
+  .filter-dropdown {
+    display: block;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
   </style>
 </head>
 
@@ -204,27 +222,25 @@
     <div class="side-menu">
       <ul>
         <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
-        <li><a href="register-company.html"><i class="material-icons">business_center</i>Register Company</a></li>
-        <li><a href="employee-management.html" class="active"><i class="material-icons">people</i>Employee Information</a></li>
-        <li><a href="add-employee.html"><i class="material-icons">person_add</i>Add Employee</a></li> 
-        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donation Report</a></li>
-        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="employee-management.html" class="active"><i class="material-icons">people</i>PRO Information</a></li>
+        <li><a href="add-employee.html"><i class="material-icons">group_add</i>Add PRO</a></li> 
+        <li><a href="register.html"><i class="material-icons">person_add</i>Register</a></li>
+        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donor Report</a></li>
         <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
       </ul>
     </div>
 
     <div class="employee-management">
-      <h2>Employee Management</h2>
+      <h2>PRO List</h2>
 
-      <!-- Search and Filter -->
+      <!-- Filter by Publisher Dropdown -->
       <div class="search-container">
-        <input type="text" class="search-bar" id="searchBar" placeholder="Search employees...">
+        <input type="text" class="search-bar" id="searchBar" placeholder="Search PROs...">
         <select class="filter-dropdown" id="filterDropdown">
-          <option value="">Filter by Company</option>
-          <option value="Khalid Engineering (Private Limited)">Khalid Engineering (Private Limited)</option>
-          <option value="Khaldun (Private Limited)">Khaldun (Private Limited)</option>
-          <option value="Keladi (International)">Keladi (International)</option>
-          <option value="Malik Holdings (Sdn Bhd)">Malik Holdings (Sdn Bhd)</option>
+          <option value="">Filter by Publisher</option>
+          <option value="MF WORLDWIDE RESOURCES">MF WORLDWIDE RESOURCES</option>
+          <!-- <option value="Publisher B">Publisher B</option>
+          <option value="Publisher C">Publisher C</option> -->     
         </select>
       </div>
 
@@ -234,128 +250,68 @@
   </div>
 
   <script>
-    // Your employees data
-    // Your employees data
-// Your employees data
- // Your employees data
-const employees = [
+    const employees = [
   {
-    name: "Ahmad Khalid",
-    fullName: "Ahmad Khalid B. Ali",
-    position: "Manager",
-    department: "Sales",
-    company: "Khalid Engineering (Private Limited)",
-    address: "123 Main Street, Cityville",
-    phoneNumber: "123-456-7890",
-    email: "ahmad.khalid@example.com",
-    pro: "Ahmad Khalid B. Ali"
+    name: "Ali Bin Ahmad",
+    address: "123 Jalan ABC, Taman XYZ, 12345 Kuala Lumpur",
+    phoneNumber: "012-3456789",
+    email: "ali@example.com",
+    publisher: "MF WORLDWIDE RESOURCES"
   },
   {
-    name: "Nurul Azizah",
-    fullName: "Nurul Azizah B. Abdul Rahman",
-    position: "Developer",
-    department: "Engineering",
-    company: "Khaldun (Private Limited)",
-    address: "456 Elm Avenue, Townsville",
-    phoneNumber: "987-654-3210",
-    email: "nurul.azizah@example.com",
-    pro: "Ahmad Khalid B. Ali"
+    name: "Siti Binti Kamal",
+    address: "456 Jalan DEF, Taman UVW, 67890 Petaling Jaya",
+    phoneNumber: "011-9876543",
+    email: "siti@example.com",
+    publisher: "MF WORLDWIDE RESOURCES"
   },
   {
-    name: "Raja Rahman",
-    fullName: "Raja Rahman B. Abdul Malik",
-    position: "Designer",
-    department: "Marketing",
-    company: "Keladi (International)",
-    address: "789 Oak Road, Villageland",
-    phoneNumber: "555-123-4567",
-    email: "raja.rahman@example.com",
-    pro: "Ahmad Khalid B. Ali"
+    name: "Ahmad Bin Ismail",
+    address: "789 Jalan GHI, Taman RST, 54321 Shah Alam",
+    phoneNumber: "017-1234567",
+    email: "ahmad@example.com",
+    publisher: "MF WORLDWIDE RESOURCES"
   },
   {
-    name: "Aisyah Ibrahim",
-    fullName: "Aisyah Ibrahim B. Abdullah",
-    position: "HR Manager",
-    department: "Human Resources",
-    company: "Malik Holdings (Sdn Bhd)",
-    address: "567 Pine Street, Hamletville",
-    phoneNumber: "222-333-4444",
-    email: "aisyah.ibrahim@example.com",
-    pro: "Ahmad Khalid B. Ali"
-  },
-  // Additional employees for each company
-  {
-    name: "Ali Hassan",
-    fullName: "Ali Hassan B. Ahmad",
-    position: "Sales Executive",
-    department: "Sales",
-    company: "Khalid Engineering (Private Limited)",
-    address: "456 Oak Lane, Townsville",
-    phoneNumber: "555-888-7777",
-    email: "ali.hassan@example.com",
-    pro: "Ahmad Khalid B. Ali"
+    name: "Nurul Huda",
+    address: "101 Lorong MNO, Taman PQR, 88888 Subang Jaya",
+    phoneNumber: "019-5554443",
+    email: "nurul@example.com",
+    publisher: "MF WORLDWIDE RESOURCES"
   },
   {
-    name: "Khadijah Malik",
-    fullName: "Khadijah Malik B. Khalid",
-    position: "Software Engineer",
-    department: "Engineering",
-    company: "Khaldun (Private Limited)",
-    address: "789 Elm Street, Cityville",
-    phoneNumber: "123-555-9999",
-    email: "khadijah.malik@example.com",
-    pro: "Ahmad Khalid B. Ali"
-  },
-  {
-    name: "Fatimah Abdullah",
-    fullName: "Fatimah Abdullah B. Keladi",
-    position: "Marketing Specialist",
-    department: "Marketing",
-    company: "Keladi (International)",
-    address: "234 Pine Avenue, Villageland",
-    phoneNumber: "777-444-5555",
-    email: "fatimah.abdullah@example.com",
-    pro: "Ahmad Khalid B. Ali"
-  },
-  {
-    name: "Zainab Ali",
-    fullName: "Zainab Ali B. Malik",
-    position: "HR Coordinator",
-    department: "Human Resources",
-    company: "Malik Holdings (Sdn Bhd)",
-    address: "345 Oak Road, Hamletville",
-    phoneNumber: "888-333-2222",
-    email: "zainab.ali@example.com",
-    pro: "Ahmad Khalid B. Ali"
+    name: "Khairul Azman",
+    address: "246 Jalan STU, Taman VWX, 77777 Shah Alam",
+    phoneNumber: "016-9871234",
+    email: "khairul@example.com",
+    publisher: "MF WORLDWIDE RESOURCES"
   }
 ];
 
 
 
-
-
-    // Function to populate employee data
-    function populateEmployees() {
-      const filterDropdown = document.getElementById("filterDropdown");
-      filterDropdown.addEventListener("change", filterEmployees);
-
+     // Function to populate employee data
+     function populateEmployees() {
       const searchBar = document.getElementById("searchBar");
       searchBar.addEventListener("input", filterEmployees);
+
+      const filterDropdown = document.getElementById("filterDropdown");
+      filterDropdown.addEventListener("change", filterEmployees);
 
       filterEmployees(); // Initial population
     }
 
     function filterEmployees() {
-      const filterDropdown = document.getElementById("filterDropdown");
-      const filterValue = filterDropdown.value;
-
       const searchBar = document.getElementById("searchBar");
       const searchValue = searchBar.value.toLowerCase();
 
+      const filterDropdown = document.getElementById("filterDropdown");
+      const filterValue = filterDropdown.value;
+
       const filteredEmployees = employees.filter(employee => {
         const nameMatches = employee.name.toLowerCase().includes(searchValue);
-        const companyMatches = !filterValue || employee.company === filterValue;
-        return nameMatches && companyMatches;
+        const publisherMatches = !filterValue || employee.publisher === filterValue;
+        return nameMatches && publisherMatches;
       });
 
       const employeeList = document.getElementById("employeeList");
@@ -366,13 +322,10 @@ const employees = [
         li.innerHTML = `
           <div class="employee-details">
             <div class="employee-name">${employee.name}</div>
-            <div class="employee-fullname">${employee.fullName}</div>
-            <div class="employee-position">Position: ${employee.position}</div>
-            <div class="employee-company">Company: ${employee.company}</div>
             <div class="employee-address">Address: ${employee.address}</div>
             <div class="employee-phone">Phone: ${employee.phoneNumber}</div>
             <div class="employee-email">Email: ${employee.email}</div>
-            <div class="employee-pro">PRO: ${employee.pro}</div>
+            <div class="employee-publisher">Publisher: ${employee.publisher}</div>
           </div>
         `;
         employeeList.appendChild(li);

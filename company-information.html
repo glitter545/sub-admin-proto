@@ -75,37 +75,45 @@
       color: #fff;
       font-weight: bold;
     }
+/* Company Info Table Styling */
+.company-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
 
-    /* Company Info Styling */
-    .company-info {
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
+  .company-info th,
+  .company-info td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .company-info h2 {
-      color: #512da8;
-      font-size: 24px;
-      margin: 0 0 10px;
-    }
+  .company-info th {
+    background-color: #512da8;
+    color: #fff;
+    text-align: center; /* Center only the header cells */
+  }
 
-    .company-info table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
+  .company-info td {
+    text-align: left; /* Align content in data cells to the left */
+  }
 
-    .company-info th,
-    .company-info td {
-      padding: 12px;
-      text-align: left;
-    }
+  .company-info tr:last-child td {
+    border-bottom: none;
+  }
 
-    .company-info th {
-      background-color: #512da8;
-      color: #fff;
-    }
+  .company-info tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .company-info table:first-child {
+    border-right: 1px solid #ddd; /* Add vertical border to the right of the first table */
+  }
+    
 
     /* Responsive Styling */
     @media (max-width: 768px) {
@@ -125,11 +133,10 @@
     <div class="side-menu">
       <ul>
         <li><a href="company-information.html" class="active"><i class="material-icons">business</i>Company Information</a></li>
-        <li><a href="register-company.html"><i class="material-icons">business_center</i>Register Company</a></li>
-        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Information</a></li>
-        <li><a href="add-employee.html"><i class="material-icons">person_add</i>Add Employee</a></li> 
-        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donation Report</a></li>
-        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>PRO Information</a></li>
+        <li><a href="add-employee.html"><i class="material-icons">group_add</i>Add PRO</a></li> 
+        <li><a href="register.html"><i class="material-icons">person_add</i>Register</a></li>
+        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donor Report</a></li>
         <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
       </ul>
     </div>
@@ -142,91 +149,68 @@
   <script>
     // Sample dynamic data for multiple companies (include your additional companies here)
     const companies = [
-  {
-    companyName: 'Khalid Engineering (Private Limited)',
-    registrationNumber: '987654321',
-    personInCharge: 'Ahmad Khalid',
-    officeFax: '+1 555-789-0123',
-    phoneNumber: '+1 555-123-4567',
-    address: '456 Elm Street',
-    secondaryAddress: '789 Oak Avenue',
-    email: 'ahmadkhalid@gmail.com'
-  },
-  {
-    companyName: 'Khaldun (Private Limited)',
-    registrationNumber: '123456789',
-    personInCharge: 'Ahmad Khalid',
-    officeFax: '+1 555-999-8888',
-    phoneNumber: '+1 555-567-8901',
-    address: '123 Main Street',
-    secondaryAddress: 'Suite 201',
-    email: 'ahmadkhalid@gmail.com'
-  },
-  {
-    companyName: 'Keladi (International)',
-    registrationNumber: '456789012',
-    personInCharge: 'Ahmad Khalid',
-    officeFax: '+1 555-555-5555',
-    phoneNumber: '+1 555-789-0123',
-    address: '789 Maple Avenue',
-    secondaryAddress: 'Suite 101',
-    email: 'ahmadkhalid@gmail.com'
-  },
-  {
-    companyName: 'Malik Holdings (Sdn Bhd)',
-    registrationNumber: '890123456',
-    personInCharge: 'Ahmad Khalid',
-    officeFax: '+1 555-123-4567',
-    phoneNumber: '+1 555-555-5555',
-    address: '567 Pine Street',
-    secondaryAddress: 'Unit B',
-    email: 'ahmadkhalid@gmail.com'
-  }
+    {
+    companyName: 'MF WORLDWIDE RESOURCES',
+    registrationNumber: 'SA0594068-V',
+    personInCharge: 'MENACI A/P GOVINDASAMY',
+    phoneNumber: '012-6977190',
+    address: 'NO DD7-9F, DESA SATU AMAN PURI APARTMENT, 52100 KEPONG',
+    email: 'meenapmppmm@gmail.com'
+}
 ];
 
   
-    // Function to create and populate company information sections
-    function createCompanySections(data) {
-      const companySections = document.getElementById('companySections');
-  
-      data.forEach(company => {
-        const section = document.createElement('div');
-        section.classList.add('company-info');
-  
-        const heading = document.createElement('h2');
-        heading.textContent = company.companyName;
-        section.appendChild(heading);
-  
-        const table = document.createElement('table');
-        const headerRow = document.createElement('tr');
-        const fieldHeader = document.createElement('th');
-        fieldHeader.textContent = 'Field';
-        const valueHeader = document.createElement('th');
-        valueHeader.textContent = 'Value';
-        headerRow.appendChild(fieldHeader);
-        headerRow.appendChild(valueHeader);
-        table.appendChild(headerRow);
-  
-        for (const field in company) {
-          if (field !== 'companyName') {
-            const row = document.createElement('tr');
-            const fieldCell = document.createElement('td');
-            fieldCell.textContent = field;
-            const valueCell = document.createElement('td');
-            valueCell.textContent = company[field];
-            row.appendChild(fieldCell);
-            row.appendChild(valueCell);
-            table.appendChild(row);
-          }
+    // Mapping between property names and display labels
+  const fieldLabels = {
+    registrationNumber: 'Registration Number',
+    personInCharge: 'Person in Charge',
+    phoneNumber: 'Phone Number',
+    address: 'Address',
+    email: 'Email'
+  };
+
+  // Function to create and populate company information sections
+  function createCompanySections(data) {
+    const companySections = document.getElementById('companySections');
+
+    data.forEach(company => {
+      const section = document.createElement('div');
+      section.classList.add('company-info');
+
+      const heading = document.createElement('h2');
+      heading.textContent = company.companyName;
+      section.appendChild(heading);
+
+      const table = document.createElement('table');
+      const headerRow = document.createElement('tr');
+      const fieldHeader = document.createElement('th');
+      fieldHeader.textContent = 'Field';
+      const valueHeader = document.createElement('th');
+      valueHeader.textContent = 'Value';
+      headerRow.appendChild(fieldHeader);
+      headerRow.appendChild(valueHeader);
+      table.appendChild(headerRow);
+
+      for (const field in company) {
+        if (field !== 'companyName') {
+          const row = document.createElement('tr');
+          const fieldCell = document.createElement('td');
+          fieldCell.textContent = fieldLabels[field] || field; // Use label if available, otherwise use field name
+          const valueCell = document.createElement('td');
+          valueCell.textContent = company[field];
+          row.appendChild(fieldCell);
+          row.appendChild(valueCell);
+          table.appendChild(row);
         }
-  
-        section.appendChild(table);
-        companySections.appendChild(section);
-      });
-    }
-  
-    // Call the function to create and populate company sections
-    createCompanySections(companies);
+      }
+
+      section.appendChild(table);
+      companySections.appendChild(section);
+    });
+  }
+
+  // Call the function to create and populate company sections
+  createCompanySections(companies);
   </script>
   
 </body>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sub Admin Dashboard - Add Employee</title>
+  <title>Sub Admin Dashboard - Add PRO</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
@@ -145,34 +145,25 @@
     <div class="side-menu">
       <ul>
         <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
-        <li><a href="register-company.html"><i class="material-icons">business_center</i>Register Company</a></li>
-        <li><a href="employee-management.html"><i class="material-icons">people</i>Employee Information</a></li>
-        <li><a href="add-employee.html" class="active"><i class="material-icons">person_add</i>Add Employee</a></li> 
-        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donation Report</a></li>
-        <li><a href="pro-search.html"><i class="material-icons">search</i>Search PRO</a></li>
+        <li><a href="employee-management.html"><i class="material-icons">people</i>PRO Information</a></li>
+        <li><a href="add-employee.html" class="active"><i class="material-icons">group_add</i>Add PRO</a></li> 
+        <li><a href="register.html"><i class="material-icons">person_add</i>Register</a></li>
+        <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donor Report</a></li>
         <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
       </ul>
     </div>
 
     <div class="employee-form">
-      <h2>Add New Employee</h2>
+      <h2>Add New PRO</h2>
       <form id="employee-form">
         <label class="form-label" for="fullName">Full Name:</label>
         <input class="form-input" type="text" id="fullName" name="fullName" required>
         
-        <label class="form-label" for="position">Position:</label>
-        <input class="form-input" type="text" id="position" name="position" required>
         
-        <label class="form-label" for="department">Department:</label>
-        <input class="form-input" type="text" id="department" name="department" required>
-        
-        <label class="form-label" for="company">Company:</label>
+        <label class="form-label" for="company">Publisher:</label>
         <select class="form-select" id="company" name="company" required>
           <option value="">Select Company</option>
-          <option value="Khalid Engineering (Private Limited)">Khalid Engineering (Private Limited)</option>
-          <option value="Khaldun (Private Limited)">Khaldun (Private Limited)</option>
-          <option value="Keladi (International)">Keladi (International)</option>
-          <option value="Malik Holdings (Sdn Bhd)">Malik Holdings (Sdn Bhd)</option>
+          <option value="MF WORLDWIDE RESOURCES">MF WORLDWIDE RESOURCES</option>
         </select>
         
         <label class="form-label" for="address">Address:</label>
@@ -184,10 +175,7 @@
         <label class="form-label" for="email">Email:</label>
         <input class="form-input" type="email" id="email" name="email" required>
         
-        <label class="form-label" for="pro">PRO:</label>
-        <input class="form-input" type="text" id="pro" name="pro" value="Ahmad Khalid B. Ali" readonly>
-        
-        <button class="form-button" type="submit">Add Employee</button>
+        <button class="form-button" type="submit">Add PRO</button>
       </form>
     </div>
   </div>
