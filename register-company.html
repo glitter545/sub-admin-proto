@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sub Admin Dashboard</title>
+  <title>Main Admin Dashboard</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
@@ -167,7 +167,7 @@
 </head>
 <body>
   <header>
-    <h1>Sub Admin Dashboard</h1>
+    <h1>Main Admin Dashboard</h1>
   </header>
   
   <div class="container">
@@ -182,11 +182,21 @@
       </ul>
     </div>
     <div class="form-section">
-        <h2>New Publisher Register</h2>
+        <h2>New Company Register</h2>
         <form id="registerForm">
+          <div class="another-section">
           <div>
-            <label for="companyRegistrationNumber">Company Registration Number:</label>
+            <label for="companyRegistrationNumber">Old Company Registration Number:  <a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank">SSM e-info</a>
+            </label>
             <input type="text" id="companyRegistrationNumber" name="companyRegistrationNumber" required>
+          </div>
+
+          <div>
+            <label for="companyRegistrationNumber">New Company Registration Number:  <a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank">SSM e-info</a></label>
+            <input type="text" id="companyRegistrationNumber" name="companyRegistrationNumber" required>
+          </div>
+
+
           </div>
           <div>
             <label for="companyName">Company Name:</label>

@@ -159,12 +159,14 @@
         <label class="form-label" for="fullName">Full Name:</label>
         <input class="form-input" type="text" id="fullName" name="fullName" required>
         
-        
         <label class="form-label" for="company">Publisher:</label>
-        <select class="form-select" id="company" name="company" required>
-          <option value="">Select Company</option>
-          <option value="MF WORLDWIDE RESOURCES">MF WORLDWIDE RESOURCES</option>
-        </select>
+        <input class="form-input" type="text" id="company" name="company" value="MF WORLDWIDE RESOURCES" readonly>
+        
+        <label class="form-label" for="icPassport">IC/Passport Number:</label>
+        <input class="form-input" type="text" id="icPassport" name="icPassport" required>
+        
+        <label class="form-label" for="proPicture">Upload Picture of PRO:</label>
+        <input class="form-input" type="file" id="proPicture" name="proPicture">
         
         <label class="form-label" for="address">Address:</label>
         <input class="form-input" type="text" id="address" name="address" required>
@@ -179,6 +181,7 @@
       </form>
     </div>
   </div>
+
 
   <script>
     // JavaScript code for adding new employees will go here
