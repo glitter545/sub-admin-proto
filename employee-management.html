@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sub Admin Dashboard</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Pros</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.js"></script>
+
   <style>
     /* General Styling */
     body {
@@ -40,6 +39,44 @@
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
+      color: #512da8;
+    }
+
+    /* Main Content Styling */
+    .main-content {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      color: #512da8;
+      animation: slide-up 0.4s ease-in-out;
+    }
+
+    /* PRO Table Styling */
+    .pro-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .pro-table th,
+    .pro-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .pro-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+
+    /* Side Menu Styling */
+    .side-menu {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      color: #512da8; /* Dark blue color for default text color */
     }
 
     .side-menu ul {
@@ -56,7 +93,7 @@
       display: flex;
       align-items: center;
       padding: 10px 20px;
-      color: #512da8;
+      color: #512da8; /* Dark blue color */
       text-decoration: none;
       border-radius: 5px;
       transition: background-color 0.3s ease;
@@ -76,267 +113,98 @@
       font-weight: bold;
     }
 
-    /* Employee Management Styling */
-    .employee-management {
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
-
-    .employee-management h2 {
-      color: #512da8;
-      font-size: 24px;
-      margin: 0 0 20px;
-    }
-
-    .employee-list {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .employee-list li {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: #fff;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .employee-list li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    .details-button {
+      background-color: #512da8;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    .employee-details {
-      flex: 1;
+    .details-button:hover {
+      background-color: #3b2064;
     }
 
-    .employee-name {
-      color: #512da8;
-      font-size: 18px;
-      margin: 0 0 5px;
-    }
+    .pro-table td {
+      text-align: center;
+  }
+    .view-button {
+    background-color: #512da8;
+    color: #fff;
+    border: none;
+    padding: 5px 10px; /* Adjust the padding here to control the button size */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+  }
 
-    .employee-position {
-      color: #888;
-      font-size: 14px;
-      margin: 0;
-    }
+  .view-button:hover {
+    background-color: #3b2064;
+  }
+    
+    /* Animation Styling */
+    @keyframes slide-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-    /* Responsive Styling */
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-    .employee-list li {
-      display: flex;
-      align-items: flex-start;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: #fff;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .employee-list li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-    }
-
-    .employee-details {
-      flex: 1;
-      padding-left: 20px;
-    }
-
-    .employee-name {
-      color: #512da8;
-      font-size: 20px;
-      margin: 0 0 5px;
-    }
-
-    .employee-fullname,
-    .employee-position,
-    .employee-company,
-    .employee-address,
-    .employee-phone,
-    .employee-email,
-    .employee-pro {
-      color: #666;
-      font-size: 16px;
-      margin: 5px 0;
-    }
-    .search-container {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .search-bar {
-      flex: 1;
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .search-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-
-  .search-bar {
-    flex: 1;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  /* Change display to block for the filter dropdown */
-  .filter-dropdown {
-    display: block;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
   </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
   <header>
-    <h1>Sub Admin Dashboard</h1>
+    <h1>PRO Lists</h1>
   </header>
 
   <div class="container">
+    <!-- Side Menu -->
     <div class="side-menu">
       <ul>
-        <li><a href="company-information.html"><i class="material-icons">business</i>Company Information</a></li>
+        <li><a href="dash.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+        <li><a href="company-information.html"><i class="material-icons">business</i>Publisher Information</a></li>
         <li><a href="employee-management.html" class="active"><i class="material-icons">people</i>PRO Information</a></li>
+        <li><a href="pro-database.html"><i class="material-icons">storage</i>PRO Database</a></li>
         <li><a href="add-employee.html"><i class="material-icons">group_add</i>Add PRO</a></li> 
         <li><a href="register.html"><i class="material-icons">person_add</i>Register</a></li>
         <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donor Report</a></li>
         <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
-        <li><a href="renewal.html"><i class="material-icons">description</i>SSM e-info</a></li>
+        <li><a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank"><i class="material-icons">description</i>SSM e-info</a></li>
 
       </ul>
     </div>
 
-    <div class="employee-management">
-      <h2>PRO Database</h2>
-
-      <!-- Filter by Publisher Dropdown -->
-      <div class="search-container">
-        <input type="text" class="search-bar" id="searchBar" placeholder="Search PROs...">
-        <select class="filter-dropdown" id="filterDropdown">
-          <option value="">Filter by Publisher</option>
-          <option value="MF WORLDWIDE RESOURCES">MF WORLDWIDE RESOURCES</option>
-          <!-- <option value="Publisher B">Publisher B</option>
-          <option value="Publisher C">Publisher C</option> -->     
-        </select>
-      </div>
-
-      <!-- Employee List -->
-      <ul class="employee-list" id="employeeList"></ul>
+    <div class="main-content">
+      <h2>Search PRO:</h2>
+      <input type="text" id="searchInput" placeholder="Search PROs">
+      <table class="pro-table">
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Total Database</th>
+          </tr>
+        </thead>
+        <tbody id="proList">
+          <!-- JavaScript will populate the pro list here -->
+        </tbody>
+      </table>
     </div>
   </div>
-
-  <script>
-    const employees = [
-  {
-    name: "Ali Bin Ahmad",
-    address: "123 Jalan ABC, Taman XYZ, 12345 Kuala Lumpur",
-    phoneNumber: "012-3456789",
-    email: "ali@example.com",
-    publisher: "MF WORLDWIDE RESOURCES"
-  },
-  {
-    name: "Siti Binti Kamal",
-    address: "456 Jalan DEF, Taman UVW, 67890 Petaling Jaya",
-    phoneNumber: "011-9876543",
-    email: "siti@example.com",
-    publisher: "MF WORLDWIDE RESOURCES"
-  },
-  {
-    name: "Ahmad Bin Ismail",
-    address: "789 Jalan GHI, Taman RST, 54321 Shah Alam",
-    phoneNumber: "017-1234567",
-    email: "ahmad@example.com",
-    publisher: "MF WORLDWIDE RESOURCES"
-  },
-  {
-    name: "Nurul Huda",
-    address: "101 Lorong MNO, Taman PQR, 88888 Subang Jaya",
-    phoneNumber: "019-5554443",
-    email: "nurul@example.com",
-    publisher: "MF WORLDWIDE RESOURCES"
-  },
-  {
-    name: "Khairul Azman",
-    address: "246 Jalan STU, Taman VWX, 77777 Shah Alam",
-    phoneNumber: "016-9871234",
-    email: "khairul@example.com",
-    publisher: "MF WORLDWIDE RESOURCES"
-  }
-];
-
-
-
-     // Function to populate employee data
-     function populateEmployees() {
-      const searchBar = document.getElementById("searchBar");
-      searchBar.addEventListener("input", filterEmployees);
-
-      const filterDropdown = document.getElementById("filterDropdown");
-      filterDropdown.addEventListener("change", filterEmployees);
-
-      filterEmployees(); // Initial population
-    }
-
-    function filterEmployees() {
-      const searchBar = document.getElementById("searchBar");
-      const searchValue = searchBar.value.toLowerCase();
-
-      const filterDropdown = document.getElementById("filterDropdown");
-      const filterValue = filterDropdown.value;
-
-      const filteredEmployees = employees.filter(employee => {
-        const nameMatches = employee.name.toLowerCase().includes(searchValue);
-        const publisherMatches = !filterValue || employee.publisher === filterValue;
-        return nameMatches && publisherMatches;
-      });
-
-      const employeeList = document.getElementById("employeeList");
-      employeeList.innerHTML = "";
-
-      filteredEmployees.forEach(employee => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-          <div class="employee-details">
-            <div class="employee-name">${employee.name}</div>
-            <div class="employee-address">Address: ${employee.address}</div>
-            <div class="employee-phone">Phone: ${employee.phoneNumber}</div>
-            <div class="employee-email">Email: ${employee.email}</div>
-            <div class="employee-publisher">Publisher: ${employee.publisher}</div>
-          </div>
-        `;
-        employeeList.appendChild(li);
-      });
-    }
-
-    // Call the function to populate employees when the page loads
-    window.addEventListener("load", populateEmployees);
-  </script>
+</div>
+<script src="test.js"></script>
+  
 </body>
-
 </html>
