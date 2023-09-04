@@ -169,8 +169,6 @@
         <label class="form-label" for="icPassport">IC/Passport Number:</label>
         <input class="form-input" type="text" id="icPassport" name="icPassport" required>
         
-        <label class="form-label" for="proPicture">Upload Picture of PRO:</label>
-        <input class="form-input" type="file" id="proPicture" name="proPicture">
         
         <label class="form-label" for="address">Address:</label>
         <input class="form-input" type="text" id="address" name="address" required>
@@ -181,6 +179,8 @@
         <label class="form-label" for="email">Email:</label>
         <input class="form-input" type="email" id="email" name="email" required>
         
+        <label class="form-label" for="proPicture">Upload Picture of PRO:</label>
+        <input class="form-input" type="file" id="proPicture" name="proPicture">
         <button class="form-button" type="submit">Add PRO</button>
       </form>
     </div>
@@ -188,7 +188,41 @@
 
 
   <script>
-    // JavaScript code for adding new employees will go here
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("employee-form");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        const fullName = document.getElementById("fullName").value;
+        const icPassport = document.getElementById("icPassport").value;
+        const address = document.getElementById("address").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
+        const email = document.getElementById("email").value;
+
+        const formData = new FormData();
+        formData.append("fullName", fullName);
+        formData.append("icPassport", icPassport);
+        formData.append("address", address);
+        formData.append("phoneNumber", phoneNumber);
+        formData.append("email", email);
+        formData.append("proPicture", document.getElementById("proPicture").files[0]);
+
+        fetch("/add-pro", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("PRO added:", data);
+            // Reset the form after successful submission
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("Error adding PRO:", error);
+          });
+      });
+    });
   </script>
 </body>
 

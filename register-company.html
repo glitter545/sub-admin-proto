@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     * {
-  /* ...other styles... */
-  box-sizing: border-box; /* Add this line to the global styles */
-}
+      box-sizing: border-box;
+    }
+
     /* General Styling */
     body {
       font-family: 'Roboto', sans-serif;
@@ -133,25 +133,43 @@
     .form-section button:hover {
       background-color: #e1bee7;
     }
-    
+
+    /* Green border for valid input */
+    input:valid {
+      border: 1px solid green;
+    }
+
+    /* Red border for invalid input */
+    /* Red border for invalid input */
+    input:invalid {
+      border: 2px solid red;
+    }
+
+    /* Display the small element for invalid input */
+    input:invalid + small {
+      display: inline-block;
+      color: red;
+    }
+
     /* Custom styles for PRO form */
     .form-section.pro-form {
       margin-top: 30px;
     }
-    
+
     /* Another Section Grid Styling */
     .another-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px; /* Add the column-gap property here */
-  row-gap: 10px;
-}
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      row-gap: 10px;
+    }
+
     @media (max-width: 768px) {
       .container {
         grid-template-columns: 1fr;
       }
     }
-    
+
     @keyframes slide-up {
       0% {
         opacity: 0;
@@ -189,22 +207,19 @@
         <h2>New Company Register</h2>
         <form id="registerForm">
           <div class="another-section">
-          <div>
-            <label for="companyRegistrationNumber">Old Company Registration Number:  <a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank">SSM e-info</a>
-            </label>
-            <input type="text" id="companyRegistrationNumber" name="companyRegistrationNumber" required>
-          </div>
-
-          <div>
-            <label for="companyRegistrationNumber">New Company Registration Number:  <a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank">SSM e-info</a></label>
-            <input type="text" id="companyRegistrationNumber" name="companyRegistrationNumber" required>
-          </div>
-
-
+            <div>
+              <label for="companyRegistrationNumber">Old Company Registration Number:  <a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank">SSM e-info</a></label>
+              <input type="text" id="companyRegistrationNumber" name="companyRegistrationNumber" required>
+            </div>
+            <div>
+              <label for="companyRegistrationNumber">New Company Registration Number:  <a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank">SSM e-info</a></label>
+              <input type="text" id="newCompanyRegistrationNumber" name="newCompanyRegistrationNumber" required>
+            </div>
           </div>
           <div>
             <label for="companyName">Company Name:</label>
-            <input type="text" id="companyName" name="companyName" required>
+            <input type="text" id="companyName" name="companyName" required pattern="^[A-Za-z0-9\s]+$">
+            <small>Company name should only contain letters, numbers, and spaces.</small>
           </div>
           <div>
             <label for="companyLabel">Company Label:</label>
@@ -218,8 +233,9 @@
                 <option value="Yayasan">Yayasan</option>
                 <option value="Pertubuhan">Pertubuhan</option>
                 <option value="Persutuan">Persutuan</option>
+                <option value="Consultant">Consultant</option>
             </select>
-        </div>
+          </div>
           <div>
             <label for="personInCharge">Person in Charge:</label>
             <input type="text" id="personInCharge" name="personInCharge" required>
@@ -228,7 +244,6 @@
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" style="height:80px;" required>
           </div>
-
           <div class="another-section">
             <div>
               <label for="phoneNumber">Phone Number:</label>
@@ -250,12 +265,28 @@
               <label for="proName">PRO Name:</label>
               <input type="text" id="proName" name="proName" required>
             </div>
+            <div>
+              <label for="publisher">Publisher:</label>
+              <input type="text" id="publisher" name="publisher" required>
+            </div>
           </div>
-
           <button type="submit" id="registerButton">Register</button>
         </form>
       </div>
     </div>
   </div>
+
+  <script>
+    // JavaScript to handle input validation and border color
+    const companyNameInput = document.getElementById("companyName");
+
+    companyNameInput.addEventListener("input", () => {
+      if (companyNameInput.checkValidity()) {
+        companyNameInput.style.border = "1px solid green";
+      } else {
+        companyNameInput.style.border = "1px solid red";
+      }
+    });
+  </script>
 </body>
 </html>

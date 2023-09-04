@@ -13,6 +13,7 @@
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
+      height: 100vh;
     }
     
     /* Header Styling */
@@ -23,14 +24,72 @@
       color: #fff;
     }
     
+    /* Updated Header Styling */
+header {
+  background-color: #512da8;
+  padding: 10px; /* Reduce the top and bottom padding */
+  text-align: center;
+  color: #fff;
+}
+
+/* Updated Header Text Styles */
+.header-title {
+  color: red;
+  font-size: 24px; /* Reduce the font size */
+  font-weight: bold;
+  margin: 0;
+}
+
+.header-subtitle {
+  font-size: 18px; /* Reduce the font size */
+  margin-top: 5px; /* Reduce the top margin */
+}
+
+.header-small-text {
+  font-size: 14px; /* Reduce the font size */
+  margin-top: 5px; /* Reduce the top margin */
+}
+
+  /* Style for the image containers */
+.stat-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust the height as needed */
+}
+
+.stat-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+     /* Footer Styling */
+     .footer {
+      background-color: #512da8;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Footer Text Styling */
+    .footer-text {
+      font-size: 14px;
+    }
+    
     /* Container Styling */
     .container {
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
       padding: 20px;
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 1fr;
       gap: 20px;
+    }
+
+    /* Logo Styling */
+    .logo img {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px;
     }
     
     /* Side Menu Styling */
@@ -74,22 +133,29 @@
       color: #fff;
       font-weight: bold;
     }
-    
+
     /* Statistics Section Styling */
     .statistics-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-    
-    .statistics-box {
-      background-color: #f1f8ff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      text-align: center;
-      animation: slide-up 0.4s ease-in-out;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax values */
+  gap: 20px; /* Reduce the gap between rows */
+  grid-column-gap: 120px;
+  max-width: 800px; /* Set a maximum width for the statistics section */
+  margin: 0 auto; /* Center the statistics section horizontally */
+}
+
+/* Style for each statistics box */
+.statistics-box {
+  background-color: #f1f8ff;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  animation: slide-up 0.4s ease-in-out;
+  width: 100%; /* Each box occupies 100% of available width */
+  /* Adjust margin to create even spacing between boxes */
+  margin-bottom: 20px; /* Add space at the bottom of each box */
+}
     
     .statistics-box h2 {
       color: #512da8;
@@ -121,17 +187,25 @@
       background-color: #e1bee7;
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 400px) {
+  /* For small screens, make each column take up the full width */
+  .statistics-box {
+    grid-column: span 2;
+  }
+}
+    
+    @media (min-width: 768px) {
+      /* For larger screens, adjust the grid layout */
       .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: auto 200px 1fr;
       }
-      
-      .statistics-section {
-        grid-template-columns: 1fr;
-      }
-      
+    }
+    
+    @media (max-width: 768px) {
+      /* Adjustments for smaller screens */
       .side-menu {
-        margin-bottom: 20px;
+        grid-row: 2;
+        width: 100%;
       }
     }
     
@@ -146,14 +220,22 @@
         transform: translateY(0);
       }
     }
+    
   </style>
 </head>
 <body>
   <header>
-    <h1>Publisher Dashboard</h1>
+    <div class="header-title">PERTUBUHAN MEMBANTU PESAKIT PARAH MISKIN MALAYSIA</div>
+    <div class="header-subtitle">(MALAYSIAN ASSOCIATION HELP FOR THE POOR TERMINALLY ILL)</div>
+    <div class="header-small-text">MF WORLDWIDE RESOURCES DASHBOARD</div>
   </header>
   
   <div class="container">
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="logo1.png" alt="Your Logo">
+    </div>
     <div class="side-menu">
         <ul>
             <li><a href="dash.html" class="active"><i class="material-icons">dashboard</i>Dashboard</a></li>
@@ -165,7 +247,6 @@
             <li><a href="donation-report.html"><i class="material-icons">monetization_on</i>Donor Report</a></li>
             <li><a href="renewal.html"><i class="material-icons">refresh</i>Renewal Status</a></li>
             <li><a href="https://www.ssm-einfo.my/index.php?id=login" target="_blank"><i class="material-icons">description</i>SSM e-info</a></li>
-    
           </ul>
     </div>
     
@@ -184,6 +265,35 @@
             <a href="pro-database.html">View Database</a>
           </div>
         </div>
+
+        <!-- Add new statistics boxes for "Document Download" and "Database Renewal" with images -->
+<div class="statistics-box">
+  <h2>Document Download</h2>
+  <div class="stat-image">
+    <img src="p1_2.png" alt="Document Download">
+  </div>
+  <div class="view-button">
+    <a href="document-download.html">Download Documents</a>
+  </div>
+</div>
+
+<div class="statistics-box">
+  <h2>Database Renewal</h2>
+  <div class="stat-image">
+    <img src="p1_3.png" alt="Database Renewal">
+  </div>
+  <div class="view-button">
+    <a href="database-renewal.html">Renew Database</a>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-text">
+        No. 5-3-2, Blok C, Jalan 3/50, Diamond Square Commercial Centre, Off Jalan Gombak, 53000 Kuala Lumpur.<br>
+        Tel: 03-4021 8271 Fax: 03-4022 4459 / Email: pesakitparah@outlook.com Website: www.pmppmm.com
       </div>
     </div>
 </body>

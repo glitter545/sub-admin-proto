@@ -180,6 +180,10 @@
       <h2>Register Personal Donor</h2>
       <form id="registerForm">
         <div>
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div>
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required>
         </div>
@@ -200,8 +204,20 @@
           <input type="email" id="email" name="email" required>
         </div>
         <div>
-          <label for="address">Amount:</label>
-          <input type="text" id="address" name="address" required>
+          <label for="amount">Amount:</label>
+          <input type="text" id="amount" name="amount" required>
+        </div>
+        <div>
+          <label for="receiptNumber">Receipt Number:</label>
+          <input type="text" id="receiptNumber" name="receiptNumber" required>
+        </div>
+        <div>
+          <label for="publisher">Publisher:</label>
+          <input type="text" id="publisher" name="publisher" required>
+        </div>
+        <div>
+          <label for="pro">PRO:</label>
+          <input type="text" id="pro" name="pro" required>
         </div>
         <button type="submit">Register</button>
       </form>
